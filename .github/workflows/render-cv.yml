@@ -41,7 +41,17 @@ jobs:
             echo "Missing RenderCV config file!"
             exit 1
           fi
-          rendercv render $cv_file --settings $settings
+          design=$(find $rendercv_dir -maxdepth 1 -type f \( -name "design.yaml" -o -name "design.yml" \))
+          if [ -z "$design" ]; then
+            echo "Missing RenderCV design file!"
+            exit 1
+          fi
+          locale=$(find $rendercv_dir -maxdepth 1 -type f \( -name "locale.yaml" -o -name "locale.yml" \))
+          if [ -z "$locale" ]; then
+            echo "Missing RenderCV locale file!"
+            exit 1
+          fi
+          rendercv render $cv_file --settings $settings --design $design --locale-catalog $locale
           rm assets/rendercv/rendercv_output/*.typ
       - name: Upload rendercv_output as an artifact
         uses: actions/upload-artifact@v4
@@ -53,5 +63,9 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add -A
-          git commit -m "chore: render the latest CV"
-          git push
+          if git diff --cached --quiet; then
+            echo "No CV output changes to commit."
+          else
+            git commit -m "chore: render the latest CV"
+            git push
+          fi

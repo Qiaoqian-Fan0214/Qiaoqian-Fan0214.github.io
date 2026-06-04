@@ -27,7 +27,7 @@ cv:
       - institution: The Hong Kong University of Science and Technology
         location: Hong Kong, China
         url: https://hkust.edu.hk/
-        area: Artificial Intelligence
+        area: Department of Computer Science & Engineering
         degree: Exchange Student
         start_date: 2025-09
         end_date: 2025-12
@@ -105,14 +105,17 @@ cv:
       - name: Programming
         icon: fa-solid fa-code
         keywords: Python, C++
+        summary: Python, C++
 
       - name: System & Tooling
         icon: fa-solid fa-code
-        keywords: SSH, Tmux, Bash, Git, Linux, LaTeX,
+        keywords: SSH, Tmux, Bash, Git, Linux, LaTeX
+        summary: SSH, Tmux, Bash, Git, Linux, LaTeX
 
       - name: Agent
         icon: fa-solid fa-code
         keywords: Codex, Claude Code, Cursor
+        summary: Codex, Claude Code, Cursor
 
     Languages:
       - name: Chinese
