@@ -13,7 +13,6 @@ description: >
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 keywords: Yifan Zhao, HKUST Guangzhou, artificial intelligence, machine learning, computer vision
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⛵️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -56,8 +55,8 @@ external_services:
 navbar_fixed: true
 footer_fixed: true
 search_enabled: true
-socials_in_search: true
-posts_in_search: true
+socials_in_search: false
+posts_in_search: false
 bib_search: true
 
 # Dimensions
