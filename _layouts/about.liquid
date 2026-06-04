@@ -15,9 +15,7 @@ layout: default
   </header>
 
   <article>
-    <div class="about-hero">
-      <div class="about-hero-text">{{ content }}</div>
-
+    <div id="home" class="about-hero">
       {% if page.profile %}
         <div class="profile">
           {% if page.profile.image %}
@@ -40,14 +38,16 @@ layout: default
           {% endif %}
         </div>
       {% endif %}
-      </div>
+
+      <div class="about-hero-text">{{ content }}</div>
+    </div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
-      </h2>
-      {% include news.liquid limit=true %}
+      <section id="news" class="home-section-anchor">
+        <h2>News</h2>
+        {% include news.liquid limit=true %}
+      </section>
     {% endif %}
 
     <!-- Latest posts -->
@@ -60,13 +60,13 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
+      <section id="publications" class="home-section-anchor">
+        <h2>Selected Publications</h2>
+        {% include selected_papers.liquid %}
+      </section>
     {% endif %}
 
-    <section class="home-list-section">
+    <section id="awards" class="home-list-section home-section-anchor">
       <h2>Awards</h2>
       <div class="home-horizontal-list">
         <article class="home-horizontal-item">
@@ -104,7 +104,7 @@ layout: default
       </div>
     </section>
 
-    <section class="home-list-section">
+    <section id="education" class="home-list-section home-section-anchor">
       <h2>Education</h2>
       <div class="home-horizontal-list">
         <article class="home-horizontal-item">

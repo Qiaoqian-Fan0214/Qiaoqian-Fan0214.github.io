@@ -5,34 +5,52 @@ permalink: /assets/js/search-data.js
 const ninja = document.querySelector("ninja-keys");
 
 ninja.data = [
-  {%- for page in site.pages -%}
-    {%- if page.permalink == "/" -%}
-      {%- assign about_title = page.title | escape | strip -%}
-    {%- endif -%}
-  {%- endfor -%}
   {
-    id: "nav-{{ about_title | slugify }}",
-    title: "{{ about_title | truncatewords: 13 }}",
+    id: "nav-home",
+    title: "Home",
     section: "Navigation",
     handler: () => {
       window.location.href = "{{ '/' | relative_url }}";
     },
   },
-  {%- assign sorted_pages = site.pages | sort: "nav_order" -%}
-  {%- for p in sorted_pages -%}
-    {%- if p.nav and p.autogen == null and p.dropdown != true -%}
-      {%- unless p.permalink == "/" or p.url == "/" -%}
-        {
-          {%- assign title = p.title | escape | strip -%}
-          id: "nav-{{ title | slugify }}",
-          title: "{{ title | truncatewords: 13 }}",
-          description: "{{ p.description | strip_html | strip_newlines | escape | strip }}",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "{{ p.url | relative_url }}";
-          },
-        },
-      {%- endunless -%}
-    {%- endif -%}
-  {%- endfor -%}
+  {
+    id: "nav-news",
+    title: "News",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "{{ '/#news' | relative_url }}";
+    },
+  },
+  {
+    id: "nav-publications",
+    title: "Publications",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "{{ '/#publications' | relative_url }}";
+    },
+  },
+  {
+    id: "nav-awards",
+    title: "Awards",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "{{ '/#awards' | relative_url }}";
+    },
+  },
+  {
+    id: "nav-education",
+    title: "Education",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "{{ '/#education' | relative_url }}";
+    },
+  },
+  {
+    id: "nav-cv",
+    title: "CV",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "{{ '/cv/' | relative_url }}";
+    },
+  },
 ];

@@ -80,20 +80,28 @@ ul.task-list input[type="checkbox"] {
 
 .about-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 200px);
-  gap: 1.5rem;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  gap: 2rem;
   align-items: start;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.8rem;
 
   .profile {
-    justify-self: end;
+    justify-self: start;
     width: 100%;
-    max-width: 200px;
+    max-width: 260px;
 
     .more-info {
-      font-size: 0.84rem;
+      font-size: 0.86rem;
     }
   }
+}
+
+.about-hero-text {
+  max-width: 46rem;
+}
+
+.home-section-anchor {
+  scroll-margin-top: 5rem;
 }
 
 @media (min-width: 576px) {
@@ -131,8 +139,8 @@ ul.task-list input[type="checkbox"] {
 
 .home-horizontal-item {
   display: grid;
-  grid-template-columns: minmax(8.5rem, 0.26fr) 1fr;
-  gap: 1.25rem;
+  grid-template-columns: minmax(9rem, 0.22fr) minmax(0, 1fr);
+  gap: 1.5rem;
   padding: 0.9rem 0;
   border-bottom: 1px solid var(--global-divider-color);
 }
