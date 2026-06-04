@@ -258,6 +258,9 @@ ul.task-list input[type="checkbox"] {
 
 .social {
   text-align: center;
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--global-divider-color);
 
   .social-toolbar {
     display: inline-flex;
