@@ -8,7 +8,7 @@ subtitle: >
 
 profile:
   align: right
-  image: prof_pic.JPG
+  image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p><i class="fa-solid fa-envelope"></i> <a href="mailto:yzhao642@connect.hkust-gz.edu.cn">yzhao642@connect.hkust-gz.edu.cn</a></p>
