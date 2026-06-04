@@ -17,6 +17,24 @@ $(document).ready(function () {
   });
   $("a").removeClass("waves-effect waves-light");
 
+  // Smoothly scroll same-page section links while preserving the URL hash.
+  $("a[href^='#'], a[href^='/#']").click(function (event) {
+    const rawHref = $(this).attr("href");
+    const targetId = rawHref && rawHref.includes("#") ? rawHref.substring(rawHref.indexOf("#")) : "";
+
+    if (!targetId || targetId === "#") return;
+
+    const isSamePath = rawHref.startsWith("#") || window.location.pathname === "/";
+    const target = document.getElementById(targetId.substring(1));
+
+    if (isSamePath && target) {
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.pushState(null, "", targetId);
+      $(".navbar-collapse").collapse("hide");
+    }
+  });
+
   // bootstrap-toc
   if ($("#toc-sidebar").length) {
     // remove related publications years from the TOC

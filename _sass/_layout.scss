@@ -4,6 +4,12 @@
 
 @use "variables" as v;
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   padding-bottom: 70px;
   color: var(--global-text-color);
