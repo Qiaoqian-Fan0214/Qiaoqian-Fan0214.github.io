@@ -32,6 +32,19 @@ cv:
         start_date: 2025-09
         end_date: 2025-12
 
+    Publications:
+      - title: "APCyc: Property-Informed Design of Cyclic Peptides via Automated Cyclization"
+        date: 2026-05
+        publisher: KDD 2026 AI4Sciences Track Poster
+        url: https://arxiv.org/abs/2606.00829
+        summary: '**Yifan Zhao**\*, Lang Qin\*, Jintai Chen†. APCyc is a target-aware de novo cyclic peptide generation framework for controllable multi-property optimization in cyclic peptide design. [Code](https://github.com/HKUSTGZ-ML4Health-Lab/APCyc).'
+
+      - title: "RoboStressBench: Benchmarking VLM Robustness to Physical Visual Stress in Embodied Scenes"
+        date: 2026-05
+        publisher: arXiv preprint
+        url: https://arxiv.org/abs/2606.00828
+        summary: 'Leyi Wu\*, **Yifan Zhao**\*, Jinjie Zhang\*, Suzeyu Chen\*, et al., Ying-Cong Chen†. RoboStressBench evaluates vision-language model robustness to physical visual stress across material, viewpoint, lighting, and geometry factors. [Project](https://yuevii.github.io/robostressbench-page/) · [Code](https://github.com/YUEVII/RoboStressBench).'
+
     # Experience:
     #   - company: Institute for Advanced Study, Princeton University
     #     position: Professor of Theoretical Physics
@@ -82,7 +95,6 @@ cv:
     #       - "Men of the year 2014 by Time magazine"
 
     Awards:
-      # Use `name` (not `title`) so RenderCV treats entries as NormalEntry, not PublicationEntry.
       - name: EgoCross Challenge — 1st Award on both Source-Limited Track & Open-Source Track
         date: 2026-06
         awarder: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)

@@ -2,35 +2,14 @@
 layout: default
 ---
 {% comment %}
-  Unified CV layout that handles both RenderCV (YAML) and JSONResume (JSON) formats
-  - If page.cv_format is set, it determines which format to render:
-    - 'rendercv': Load and render only RenderCV data (site.data.cv.cv)
-    - 'jsonresume': Load and render only JSONResume data (site.data.resume)
-  - If page.cv_format is not set, the legacy behavior applies:
-    - RenderCV data is in site.data.cv.cv
-    - JSONResume data is in site.data.resume
-    - RenderCV is prioritized if both exist
-  Both formats use the same unified rendering includes for consistent output
+  Unified CV layout for the local YAML CV data and optional JSONResume data.
+  The local YAML CV data is prioritized when both data files exist.
 {% endcomment %}
 
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
       {{ page.title }}
-      {% if page.cv_pdf %}
-        <a
-          {% if page.cv_pdf contains '://' %}
-            href="{{ page.cv_pdf }}"
-          {% else %}
-            href="{{ page.cv_pdf | relative_url }}"
-          {% endif %}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="float-right"
-        >
-          <i class="fa-solid fa-file-pdf"></i>
-        </a>
-      {% endif %}
     </h1>
     {% if page.description %}
       <p class="post-description">{{ page.description }}</p>
@@ -40,24 +19,17 @@ layout: default
   <article>
     <div class="cv">
       {% comment %} Determine which CV format to render {% endcomment %}
-      {% assign render_rendercv = false %}
+      {% assign render_yaml_cv = false %}
       {% assign render_jsonresume = false %}
 
-      {% if page.cv_format == 'rendercv' %}
-        {% assign render_rendercv = true %}
-      {% elsif page.cv_format == 'jsonresume' %}
+      {% if site.data.cv and site.data.cv.cv %}
+        {% assign render_yaml_cv = true %}
+      {% elsif site.data.resume %}
         {% assign render_jsonresume = true %}
-      {% else %}
-        {% comment %} Legacy behavior: RenderCV takes priority if both exist {% endcomment %}
-        {% if site.data.cv and site.data.cv.cv %}
-          {% assign render_rendercv = true %}
-        {% elsif site.data.resume %}
-          {% assign render_jsonresume = true %}
-        {% endif %}
       {% endif %}
 
-      {% if render_rendercv and site.data.cv and site.data.cv.cv %}
-        {% comment %} RenderCV format {% endcomment %}
+      {% if render_yaml_cv and site.data.cv and site.data.cv.cv %}
+        {% comment %} Local YAML CV format {% endcomment %}
         {% assign cv = site.data.cv.cv %}
 
         <!-- Header/Contact Information -->
@@ -120,7 +92,7 @@ layout: default
           </div>
         {% endif %}
 
-        <!-- RenderCV Sections - Merge Experience and Volunteer -->
+        <!-- YAML CV Sections - Merge Experience and Volunteer -->
         {% comment %} First, combine Experience and Volunteer entries {% endcomment %}
         {% assign empty_array = '' | split: ',' %}
         {% assign exp = cv.sections.Experience | default: empty_array %}
@@ -385,7 +357,7 @@ layout: default
         {% endif %}
 
       {% else %}
-        <p>No CV data found. Please configure either RenderCV (cv.yml) or JSONResume (resume.json) data.</p>
+        <p>No CV data found. Please configure either cv.yml or JSONResume data.</p>
       {% endif %}
     </div>
   </article>
