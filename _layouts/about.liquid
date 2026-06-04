@@ -15,30 +15,32 @@ layout: default
   </header>
 
   <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
+    <div class="about-hero">
+      <div class="about-hero-text">{{ content }}</div>
 
-    <div class="clearfix">{{ content }}</div>
+      {% if page.profile %}
+        <div class="profile">
+          {% if page.profile.image %}
+            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+            {% if page.profile.image_circular %}
+              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+            {% else %}
+              {% assign profile_image_class = 'img-fluid z-depth-1
+        rounded' %}
+            {% endif %}
+            {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
+        30vw, 95vw"{% endcapture %}
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              cache_bust=true
+            %}
+          {% endif %}
+          {% if page.profile.more_info %}
+            <div class="more-info">{{ page.profile.more_info }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+      </div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
@@ -64,6 +66,64 @@ layout: default
       {% include selected_papers.liquid %}
     {% endif %}
 
+    <section class="home-list-section">
+      <h2>Awards</h2>
+      <div class="home-horizontal-list">
+        <article class="home-horizontal-item">
+          <div class="home-horizontal-meta">May 2026</div>
+          <div class="home-horizontal-body">
+            <strong>EgoCross Challenge</strong>
+            <p>
+              Global 1st place in both the Open-Source Track and the Source-Limited Track at the EgoCross Challenge, held with CVPR 2026.
+              <a href="{{ '/assets/pdf/egocross_certificate.pdf' | relative_url }}">Certificate</a> ·
+              <a href="https://github.com/YUEVII/Egocross-Challenge">Code</a> ·
+              <a href="https://arxiv.org/abs/2606.00829">Technical Report</a>
+            </p>
+          </div>
+        </article>
+        <article class="home-horizontal-item">
+          <div class="home-horizontal-meta">July 2025</div>
+          <div class="home-horizontal-body">
+            <strong>National Undergraduate Electronics Design Contest</strong>
+            <p>
+              Advanced to the National Finals, ranking in roughly the top 1.5% nationwide.
+              <a href="{{ '/assets/pdf/nuedc_award_certificate.pdf' | relative_url }}">Certificate</a>
+            </p>
+          </div>
+        </article>
+        <article class="home-horizontal-item">
+          <div class="home-horizontal-meta">2024</div>
+          <div class="home-horizontal-body">
+            <strong>ASC Student Supercomputer Challenge (ASC24)</strong>
+            <p>
+              Second Class Prize in the Intelligent Computing track.
+              <a href="{{ '/assets/img/asc24_second_class_prize.jpg' | relative_url }}">Certificate</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-list-section">
+      <h2>Education</h2>
+      <div class="home-horizontal-list">
+        <article class="home-horizontal-item">
+          <div class="home-horizontal-meta">2023 - Jun 2027</div>
+          <div class="home-horizontal-body">
+            <strong>The Hong Kong University of Science and Technology (Guangzhou)</strong>
+            <p>BEng in Artificial Intelligence, Guangzhou, China.</p>
+          </div>
+        </article>
+        <article class="home-horizontal-item">
+          <div class="home-horizontal-meta">Sep - Dec 2025</div>
+          <div class="home-horizontal-body">
+            <strong>The Hong Kong University of Science and Technology</strong>
+            <p>Exchange Student in Artificial Intelligence, Hong Kong, China.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Social -->
     {% if page.social %}
       <div class="social">
@@ -72,6 +132,10 @@ layout: default
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
+
+    <div class="visitor-globe" aria-label="Visitor globe">
+      <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=Z05Smfsq4SpaiGy9eXAqgErGaAat5u0vtKGgoeM-d1c"></script>
+    </div>
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
