@@ -306,18 +306,18 @@ ul.task-list input[type="checkbox"] {
   .visitor-map-row {
     display: flex;
     justify-content: center;
-    margin: 0.2rem 0 0.65rem;
+    margin: 0.45rem 0 0.9rem;
   }
 
   .visitor-map-inline {
     display: inline-flex;
-    width: min(28rem, 94vw);
+    width: min(60rem, 100%);
     aspect-ratio: 30 / 19;
     overflow: hidden;
     border: 1px solid var(--global-divider-color);
-    border-radius: 6px;
+    border-radius: 8px;
     background: var(--global-bg-color);
-    box-shadow: 0 0.25rem 0.85rem rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.35rem 1.15rem rgba(0, 0, 0, 0.1);
     transition:
       border-color 0.2s ease,
       box-shadow 0.2s ease,
@@ -332,7 +332,7 @@ ul.task-list input[type="checkbox"] {
 
     &:hover {
       border-color: var(--global-theme-color);
-      box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.12);
+      box-shadow: 0 0.5rem 1.45rem rgba(0, 0, 0, 0.14);
       transform: translateY(-1px);
     }
   }
