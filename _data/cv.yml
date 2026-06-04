@@ -83,6 +83,12 @@ cv:
 
     Awards:
       # Use `name` (not `title`) so RenderCV treats entries as NormalEntry, not PublicationEntry.
+      - name: EgoCross Challenge — 1st Award on both Source-Limited Track & Open-Source Track
+        date: 2026-06
+        awarder: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)
+        url: https://qiaoqian-fan0214.github.io/assets/pdf/egocross_certificate.pdf
+        summary: Team WFJ-KnowinEnvision; EgoCross Challenge winner solution.
+
       - name: National Undergraduate Electronics Design Contest
         date: 2025-07
         awarder: China Electrotechnical Society
