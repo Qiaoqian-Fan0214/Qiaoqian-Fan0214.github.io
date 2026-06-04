@@ -118,7 +118,7 @@ layout: default
           <div class="home-horizontal-meta">Sep - Dec 2025</div>
           <div class="home-horizontal-body">
             <strong>The Hong Kong University of Science and Technology</strong>
-            <p>Exchange Student in Artificial Intelligence, Hong Kong, China.</p>
+            <p>Exchange Student, Department of Computer Science &amp; Engineering, Hong Kong, China.</p>
           </div>
         </article>
       </div>
@@ -127,15 +127,20 @@ layout: default
     <!-- Social -->
     {% if page.social %}
       <div class="social">
-        <div class="contact-icons">{% social_links %}</div>
+        <div class="social-toolbar">
+          <div class="contact-icons">{% social_links %}</div>
+          <a href="https://mapmyvisitors.com/web/1c53j" class="visitor-map-inline" title="Visit tracker">
+            <img
+              src="https://mapmyvisitors.com/map.png?d=eSAlWg8Uj9mUOrpYENumKzU_4YtyYDKQqCU6j-5y5ns&cl=ffffff"
+              alt="Visit tracker"
+              loading="lazy"
+            >
+          </a>
+        </div>
 
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
-
-    <div class="visitor-globe" aria-label="Visitor globe">
-      <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=Z05Smfsq4SpaiGy9eXAqgErGaAat5u0vtKGgoeM-d1c"></script>
-    </div>
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
