@@ -1,71 +1,130 @@
 (function () {
   const selector = "[data-visitor-map]";
-  const minWidth = 320;
-  const reloadThreshold = 24;
+  const minWidth = 280;
+  const maxWidth = 576;
   const loadTimeoutMs = 15000;
 
   function getWidth(container) {
     const rect = container.getBoundingClientRect();
-    return Math.max(minWidth, Math.round(rect.width || container.offsetWidth || minWidth));
+    const width = Math.round(rect.width || container.offsetWidth || maxWidth);
+    return Math.max(minWidth, Math.min(maxWidth, width));
   }
 
   function showFallback(container) {
-    const url = container.dataset.fallbackUrl;
-    const src = container.dataset.fallbackSrc;
-    if (!url || !src) return;
+    const key = container.dataset.visitorKey;
+    const url = container.dataset.statsUrl || (key ? "https://whos.amung.us/stats/" + key + "/" : "");
+    if (!url) return;
 
     container.innerHTML = "";
 
     const link = document.createElement("a");
     link.href = url;
-    link.title = "Visit tracker";
+    link.title = "Visitor map stats";
     link.className = "visitor-map-static-fallback";
+    link.target = "_blank";
+    link.rel = "external nofollow noopener";
+    link.textContent = "Visitor map stats";
+
+    container.appendChild(link);
+  }
+
+  function markerTitle(marker) {
+    const city = marker.city || "Unknown";
+    const country = marker.cc || "";
+    return country ? city + ", " + country : city;
+  }
+
+  function markerPosition(marker) {
+    const lat = Number(marker.lat);
+    const lon = Number(marker.lon);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+
+    return {
+      left: ((lon + 180) / 360) * 100,
+      top: ((90 - lat) / 180) * 100,
+    };
+  }
+
+  function renderMap(container, markers) {
+    const key = container.dataset.visitorKey;
+    const statsUrl = container.dataset.statsUrl || "https://whos.amung.us/stats/" + key + "/";
+    const background = container.dataset.mapBackground || "classic";
+
+    container.innerHTML = "";
+
+    const link = document.createElement("a");
+    link.href = statsUrl;
+    link.title = "Visitor map stats";
+    link.className = "visitor-map-canvas";
     link.target = "_blank";
     link.rel = "external nofollow noopener";
 
     const image = document.createElement("img");
-    image.src = src;
-    image.alt = "Visit tracker";
+    image.src = "https://widgets.amung.us/mapbacks/" + encodeURIComponent(background) + ".jpg";
+    image.alt = "Live visitor map";
     image.loading = "lazy";
-
     link.appendChild(image);
+
+    markers.forEach(function (marker) {
+      const position = markerPosition(marker);
+      if (!position) return;
+
+      const pin = document.createElement("span");
+      pin.className = "visitor-map-pin" + (marker.age === "new" ? " is-new" : "");
+      pin.style.left = position.left + "%";
+      pin.style.top = position.top + "%";
+      pin.title = markerTitle(marker);
+      link.appendChild(pin);
+    });
+
     container.appendChild(link);
   }
 
   function loadMap(container) {
+    const key = container.dataset.visitorKey;
+    if (!key) return;
+    if (container.dataset.mapLoaded === "true") return;
+
     const width = getWidth(container);
-    const previousWidth = Number(container.dataset.mapWidth || 0);
-    if (container.dataset.mapLoaded === "true" && Math.abs(previousWidth - width) < reloadThreshold) return;
 
     container.dataset.mapLoaded = "true";
     container.dataset.mapWidth = String(width);
-    container.innerHTML = "";
+    renderMap(container, []);
 
+    const previousCallback = window.WAU_r_m;
+    window.WAU_r_m = function (onlineCount, statsKey, widgetIndex, markers) {
+      if (statsKey === key && Array.isArray(markers)) {
+        renderMap(container, markers);
+      }
+
+      if (typeof previousCallback === "function" && previousCallback !== window.WAU_r_m) {
+        previousCallback.apply(window, arguments);
+      }
+    };
+
+    const timing = window.performance && window.performance.timing;
+    const readyTime = timing && timing.domContentLoadedEventStart ? (timing.domContentLoadedEventStart - timing.navigationStart) / 1000 : 0;
     const params = new URLSearchParams({
-      cl: container.dataset.mapLand || "ede9fe",
-      w: String(width),
-      t: container.dataset.mapCaption || "m",
-      d: container.dataset.mapId,
-      co: container.dataset.mapOcean || "2d78ad",
-      cmo: container.dataset.mapMarkerOld || "c4b5fd",
-      cmn: container.dataset.mapMarkerNew || "7c3aed",
-      ct: container.dataset.mapText || "ffffff",
+      k: key,
+      t: document.title ? document.title.substring(0, 80).replace(/(\?=)|(\/)/g, "") : "",
+      c: "m",
+      x: window.location.href,
+      y: document.referrer,
+      a: "0",
+      d: String(readyTime),
+      v: "27",
+      r: String(Math.ceil(Math.random() * 9999)),
     });
 
     const script = document.createElement("script");
     script.type = "text/javascript";
-    script.id = "mapmyvisitors";
     script.async = true;
-    script.src = "https://mapmyvisitors.com/map.js?" + params.toString();
-    script.onerror = function () {
-      showFallback(container);
-    };
+    script.src = "https://whos.amung.us/pingjs/?" + params.toString();
 
     container.appendChild(script);
 
     window.setTimeout(function () {
-      const loading = container.querySelector(".mapmyvisitors-loading");
-      if (loading) {
+      if (!container.querySelector(".visitor-map-canvas img")) {
         showFallback(container);
       }
     }, loadTimeoutMs);
@@ -76,14 +135,6 @@
     if (!containers.length) return;
 
     containers.forEach(loadMap);
-
-    let resizeTimer;
-    window.addEventListener("resize", function () {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(function () {
-        containers.forEach(loadMap);
-      }, 180);
-    });
   }
 
   if (document.readyState === "loading") {

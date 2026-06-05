@@ -316,82 +316,105 @@ ul.task-list input[type="checkbox"] {
   .visitor-map-row {
     display: flex;
     justify-content: center;
-    margin: 0.65rem 0 1rem;
+    margin: 1.1rem 0 1.2rem;
+  }
+
+  .visitor-map-panel {
+    width: min(36rem, 82%);
+    margin: 0 auto;
+  }
+
+  .visitor-map-caption {
+    margin-bottom: 0.45rem;
+    color: var(--global-theme-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
   .visitor-map-dynamic {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: min(36rem, 82%);
+    width: 100%;
     min-height: 160px;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 8px;
-    background: #2d78ad;
+    background: #9bb8fb;
     box-shadow: 0 0.45rem 1.2rem rgba(49, 46, 129, 0.14);
 
-    a,
-    img,
-    object,
-    iframe {
-      max-width: 100%;
+    > script {
+      display: none;
     }
 
-    #mapmyvisitors-widget {
+    .visitor-map-canvas {
+      position: relative;
+      display: block !important;
+      width: 100% !important;
+      aspect-ratio: 2 / 1;
+      margin: 0 !important;
       overflow: hidden;
       border-radius: 8px;
-      background: #2d78ad;
+      background: #9bb8fb;
     }
 
-    #mapmyvisitors-widget > .mapmyvisitors-map-container {
-      overflow: hidden;
+    .visitor-map-canvas > img {
+      display: block;
+      width: 100%;
+      height: 100%;
       border-radius: 8px;
-      background-color: #2d78ad !important;
+      object-fit: cover;
     }
 
-    #mapmyvisitors-widget .mapmyvisitors-map {
-      margin-top: 0.15rem;
+    .visitor-map-pin {
+      position: absolute;
+      width: 0.7rem;
+      height: 0.7rem;
+      border: 2px solid #ffffff;
+      border-radius: 999px;
+      background: #7c3aed;
+      box-shadow:
+        0 0 0 1px rgba(76, 29, 149, 0.24),
+        0 0 0.8rem rgba(124, 58, 237, 0.45);
+      transform: translate(-50%, -50%);
     }
 
-    .mapmyvisitors-visitors,
-    .mapmyvisitors-date {
-      font-family: "Helvetica Neue", Arial, sans-serif !important;
-      text-transform: none !important;
+    .visitor-map-pin.is-new {
+      animation: visitor-map-pulse 1.25s ease-in-out infinite;
+    }
+  }
+
+  @keyframes visitor-map-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
 
-    .mapmyvisitors-visitors {
-      color: #ffffff !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.08em !important;
-      text-shadow: 0 1px 2px rgba(15, 23, 42, 0.35) !important;
-    }
-
-    .mapmyvisitors-date {
-      color: #eee7ff !important;
-      font-weight: 500 !important;
-      letter-spacing: 0.05em !important;
-      text-shadow: 0 1px 2px rgba(15, 23, 42, 0.28) !important;
+    50% {
+      opacity: 0.55;
+      transform: translate(-50%, -50%) scale(1.35);
     }
   }
 
   .visitor-map-static-fallback {
     display: inline-flex;
+    align-items: center;
     justify-content: center;
-    width: min(36rem, 82%);
-    overflow: hidden;
+    min-height: 4rem;
+    padding: 0.6rem 1rem;
     border-radius: 8px;
-
-    img {
-      display: block;
-      width: 100%;
-      object-fit: contain;
-    }
+    background: rgba(124, 58, 237, 0.08);
+    color: var(--global-theme-color);
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 
   @media (max-width: 575px) {
-    .visitor-map-dynamic,
-    .visitor-map-static-fallback {
+    .visitor-map-panel {
       width: 100%;
     }
 
