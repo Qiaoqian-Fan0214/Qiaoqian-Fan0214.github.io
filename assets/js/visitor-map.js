@@ -2,6 +2,7 @@
   const selector = "[data-visitor-map]";
   const minWidth = 320;
   const reloadThreshold = 24;
+  const loadTimeoutMs = 15000;
 
   function getWidth(container) {
     const rect = container.getBoundingClientRect();
@@ -61,6 +62,13 @@
     };
 
     container.appendChild(script);
+
+    window.setTimeout(function () {
+      const loading = container.querySelector(".mapmyvisitors-loading");
+      if (loading) {
+        showFallback(container);
+      }
+    }, loadTimeoutMs);
   }
 
   function initVisitorMaps() {
