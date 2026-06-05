@@ -41,14 +41,14 @@
     container.innerHTML = "";
 
     const params = new URLSearchParams({
-      cl: container.dataset.mapLand || "f1eaff",
+      cl: container.dataset.mapLand || "ede9fe",
       w: String(width),
-      t: "tt",
+      t: container.dataset.mapCaption || "m",
       d: container.dataset.mapId,
-      co: container.dataset.mapOcean || "ffffff",
+      co: container.dataset.mapOcean || "2d78ad",
       cmo: container.dataset.mapMarkerOld || "c4b5fd",
       cmn: container.dataset.mapMarkerNew || "7c3aed",
-      ct: container.dataset.mapText || "8b7aa8",
+      ct: container.dataset.mapText || "ffffff",
     });
 
     const script = document.createElement("script");
@@ -61,12 +61,6 @@
     };
 
     container.appendChild(script);
-
-    window.setTimeout(function () {
-      if (container.querySelector(".mapmyvisitors-loading")) {
-        showFallback(container);
-      }
-    }, 10000);
   }
 
   function initVisitorMaps() {
