@@ -309,34 +309,48 @@ ul.task-list input[type="checkbox"] {
   .visitor-map-row {
     display: flex;
     justify-content: center;
-    margin: 0.45rem 0 0.9rem;
+    margin: 0.65rem 0 1rem;
   }
 
-  .visitor-map-inline {
-    display: inline-flex;
-    width: min(34rem, 100%);
-    aspect-ratio: 30 / 19;
+  .visitor-map-dynamic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(38rem, 82%);
+    min-height: 160px;
+    margin: 0 auto;
     overflow: hidden;
-    border: 1px solid var(--global-divider-color);
+
+    a,
+    img,
+    object,
+    iframe {
+      max-width: 100%;
+    }
+  }
+
+  .visitor-map-static-fallback {
+    display: inline-flex;
+    justify-content: center;
+    width: min(38rem, 82%);
+    overflow: hidden;
     border-radius: 8px;
-    background: var(--global-bg-color);
-    box-shadow: 0 0.35rem 1.15rem rgba(0, 0, 0, 0.1);
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease,
-      transform 0.2s ease;
 
     img {
       display: block;
       width: 100%;
-      height: 100%;
       object-fit: contain;
     }
+  }
 
-    &:hover {
-      border-color: var(--global-theme-color);
-      box-shadow: 0 0.5rem 1.45rem rgba(0, 0, 0, 0.14);
-      transform: translateY(-1px);
+  @media (max-width: 575px) {
+    .visitor-map-dynamic,
+    .visitor-map-static-fallback {
+      width: 100%;
+    }
+
+    .visitor-map-dynamic {
+      min-height: 130px;
     }
   }
 
