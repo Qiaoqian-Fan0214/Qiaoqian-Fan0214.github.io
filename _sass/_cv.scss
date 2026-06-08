@@ -96,22 +96,22 @@ div.container-pdf {
 
 .cv-post-header {
   position: relative;
-  padding-right: 3rem;
+  padding-right: 4rem;
 }
 
 .cv-pdf-icon {
   position: absolute;
-  top: 0.15rem;
+  top: 0;
   right: 0;
   display: inline-flex;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 3rem;
+  height: 3rem;
   align-items: center;
   justify-content: center;
   color: var(--global-theme-color) !important;
   border: 1px solid var(--global-theme-color);
   border-radius: 50%;
-  font-size: 1.15rem;
+  font-size: 1.55rem;
   line-height: 1;
   text-decoration: none !important;
   transition:
