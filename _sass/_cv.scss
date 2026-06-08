@@ -94,6 +94,38 @@ div.container-pdf {
   justify-content: flex-start;
 }
 
+.cv-post-header {
+  position: relative;
+  padding-right: 3rem;
+}
+
+.cv-pdf-icon {
+  position: absolute;
+  top: 0.15rem;
+  right: 0;
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--global-theme-color) !important;
+  border: 1px solid var(--global-theme-color);
+  border-radius: 50%;
+  font-size: 1.15rem;
+  line-height: 1;
+  text-decoration: none !important;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.cv-pdf-icon:hover {
+  color: var(--global-bg-color) !important;
+  background-color: var(--global-theme-color);
+  transform: translateY(-1px);
+}
+
 /*****************************
  * CV LIST_GROUPS styles
  *****************************/
