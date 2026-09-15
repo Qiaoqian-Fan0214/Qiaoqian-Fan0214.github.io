@@ -47,7 +47,7 @@ cv:
         date: 2026-05
         publisher: arXiv preprint
         url: https://arxiv.org/abs/2606.00828
-        summary: 'Leyi Wu\*, **Yifan Zhao**\*, Jinjie Zhang\*, Suzeyu Chen\*, et al., Ying-Cong Chen†. RoboStressBench evaluates vision-language model robustness to physical visual stress across material, viewpoint, lighting, and geometry factors. [Project](https://yuevii.github.io/robostressbench-page/) · [Code](https://github.com/YUEVII/RoboStressBench).'
+        summary: 'Leyi Wu\*, **Yifan Zhao**\*, Jinjie Zhang\*, Suzeyu Chen\*, et al., Yinchuan Li, Ying-Cong Chen†. RoboStressBench evaluates vision-language model robustness to physical visual stress across material, viewpoint, lighting, and geometry factors. [Project](https://yuevii.github.io/robostressbench-page/) · [Code](https://github.com/YUEVII/RoboStressBench).'
 
       - title: "IPV-Bench: Benchmarking Image Protection Methods under Diverse Image-to-Video Generation Scenarios"
         date: 2026-03
