@@ -33,6 +33,8 @@ cv:
         degree: Exchange Student
         start_date: 2025-09
         end_date: 2025-12
+        highlights:
+          - "TGA: 3.6+."
 
     Publications:
       - title: "APCyc: Property-Informed Design of Cyclic Peptides via Automated Cyclization"
