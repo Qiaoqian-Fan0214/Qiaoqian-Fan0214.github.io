@@ -13,7 +13,7 @@ cv:
 
   sections:
     Summary:
-      - I am Yifan Zhao, a Year 3 undergraduate student at HKUST(GZ), interested in artificial intelligence, computer vision, and machine learning.
+      - I am Yifan Zhao, a fourth-year undergraduate student at HKUST(GZ), interested in artificial intelligence, computer vision, and machine learning.
     Education:
       - institution: The Hong Kong University of Science and Technology (Guangzhou)
         location: Guangzhou, China
@@ -129,8 +129,8 @@ cv:
 
       - name: System & Tooling
         icon: fa-solid fa-code
-        keywords: SSH, Tmux, Bash, Git, Linux, LaTeX
-        summary: SSH, Tmux, Bash, Git, Linux, LaTeX
+        keywords: SSH, Tmux, Bash, Git, Linux, LaTeX, Codex
+        summary: SSH, Tmux, Bash, Git, Linux, LaTeX, Codex
 
       - name: Agent
         icon: fa-solid fa-code

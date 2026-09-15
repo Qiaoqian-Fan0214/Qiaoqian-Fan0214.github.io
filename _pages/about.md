@@ -28,6 +28,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi, I'm Yifan Zhao (赵一帆), a third-year undergraduate student majoring in Artificial Intelligence at [The Hong Kong University of Science and Technology (Guangzhou)](https://www.hkust-gz.edu.cn/). I am currently advised by [Prof. Jintai Chen](https://whatashot.github.io/), where I explore research topics at the intersection of generative AI and AI for Science.
+Hi, I'm Yifan Zhao (赵一帆), a fourth-year undergraduate student majoring in Artificial Intelligence at [The Hong Kong University of Science and Technology (Guangzhou)](https://www.hkust-gz.edu.cn/). I am currently advised by [Prof. Jintai Chen](https://whatashot.github.io/), where I explore research topics at the intersection of generative AI and AI for Science.
 
-My research interests broadly lie in generative AI, AI for Science, and multimodal learning. As I am still at an early stage of my academic journey, I am actively building a solid foundation in the theory and practice of generative models, including diffusion models, AI agent systems, and related topics.
+My research interests broadly lie in generative AI, AI for Science, and embodied AI. As I am still at an early stage of my academic journey, I am actively building a solid foundation in the theory and practice of generative models, including diffusion models, AI agent systems, and related topics.
