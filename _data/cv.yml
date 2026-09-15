@@ -23,6 +23,8 @@ cv:
         start_date: 2023
         end_date: 2027-06
         summary: Expected graduation June 2027.
+        highlights:
+          - "CGA: 3.4+; MCGA: 3.5+ (Top 30%)."
 
       - institution: The Hong Kong University of Science and Technology
         location: Hong Kong, China
@@ -44,6 +46,12 @@ cv:
         publisher: arXiv preprint
         url: https://arxiv.org/abs/2606.00828
         summary: 'Leyi Wu\*, **Yifan Zhao**\*, Jinjie Zhang\*, Suzeyu Chen\*, et al., Ying-Cong Chen†. RoboStressBench evaluates vision-language model robustness to physical visual stress across material, viewpoint, lighting, and geometry factors. [Project](https://yuevii.github.io/robostressbench-page/) · [Code](https://github.com/YUEVII/RoboStressBench).'
+
+      - title: "IPV-Bench: Benchmarking Image Protection Methods under Diverse Image-to-Video Generation Scenarios"
+        date: 2026-03
+        publisher: Submitted to AAAI 2027
+        url: https://arxiv.org/abs/2603.26154
+        summary: "Xiaofeng Li, Leyi Sheng, **Yifan Zhao**, Zhen Sun, Zongmin Zhang, Jiaheng Wei, Xinlei He†. IPV-Bench benchmarks image protection methods for image-to-video generation across five image domains and four generators, evaluating protection effectiveness, visual fidelity, and robustness to preprocessing."
 
     # Experience:
     #   - company: Institute for Advanced Study, Princeton University
