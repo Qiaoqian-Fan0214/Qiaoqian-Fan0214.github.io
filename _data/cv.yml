@@ -131,8 +131,8 @@ cv:
 
       - name: System & Tooling
         icon: fa-solid fa-code
-        keywords: SSH, Tmux, Bash, Git, Linux, LaTeX, Codex
-        summary: SSH, Tmux, Bash, Git, Linux, LaTeX, Codex
+        keywords: SSH, Tmux, Bash, Git, Linux, LaTeX, Codex, PowerPoint
+        summary: SSH, Tmux, Bash, Git, Linux, LaTeX, Codex, PowerPoint
 
       - name: Agent
         icon: fa-solid fa-code
