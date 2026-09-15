@@ -40,7 +40,7 @@ cv:
       - title: "APCyc: Property-Informed Design of Cyclic Peptides via Automated Cyclization"
         date: 2026-05
         publisher: KDD 2026 AI4Sciences Track Poster
-        url: https://arxiv.org/abs/2606.00829
+        url: https://arxiv.org/abs/2606.12991
         summary: '**Yifan Zhao**\*, Lang Qin\*, Jintai Chen†. APCyc is a target-aware de novo cyclic peptide generation framework for controllable multi-property optimization in cyclic peptide design.'
 
       - title: "RoboStressBench: Benchmarking VLM Robustness to Physical Visual Stress in Embodied Scenes"
